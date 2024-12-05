@@ -1,16 +1,14 @@
-public class Lab8_lastName{
+public class Lab8_Horn{
     public static void main(String[] args){
         //MANUALLY CREATE YOUR TREE
         BinTree<Integer> tree = new BinTree<>();
-
-
-        tree.root = new Treenode<Integer>(10);
-        tree.root.left = new Treenode<Integer>(5);
-        tree.root.right = new Treenode<Integer>(15);
-        tree.root.left.left = new Treenode<Integer>(3);
-        tree.root.left.right = new Treenode<Integer>(7);
-        tree.root.right.left = new Treenode<Integer>(13);
-        tree.root.right.right = new Treenode<Integer>(17);
+        tree.add(10);
+        tree.add(5);
+        tree.add(3);
+        tree.add(7);
+        tree.add(15);
+        tree.add(13);
+        tree.add(17);
 
         //CALL THE TRAVERSAL METHODS
         System.out.println("---------------Pre Order---------------");

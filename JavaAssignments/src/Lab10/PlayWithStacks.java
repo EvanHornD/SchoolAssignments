@@ -20,7 +20,7 @@ public class PlayWithStacks {
 	 *  	and should be evaluated as 14
 	 */
 	public static int evaluatePostFix(String postfixExpression) {
-		Stack<String> stack = new Stack<String>();
+		Stack<String> stack = new Stack<>();
 		String currentString = "";
 		for (int i = 0; i <= postfixExpression.length(); i++) {
 			if(i==postfixExpression.length()||postfixExpression.charAt(i)==' '){
@@ -38,6 +38,7 @@ public class PlayWithStacks {
 			stack.push(currentString);
 			return;
 		}
+
 		int operand1 = Integer.parseInt((String)stack.pop());
 		int operand2 = Integer.parseInt((String)stack.pop());
 		int result = performOperation(operand1, operand2, currentString);

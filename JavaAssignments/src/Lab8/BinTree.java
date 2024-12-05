@@ -7,12 +7,45 @@ public class BinTree<T>{
         this.root = null;
     }
 
+    public void add(T nodeData){
+        if (root==null) {
+            root = new Treenode<>(nodeData);
+        }
+        addToTree(this.root, nodeData);
+    }
+
+    private void addToTree(Treenode<T> root, T nodeData){
+        int rootData;
+        int data;
+        // check if the data in the nodes are integers
+        try {
+            rootData = (int)root.data;
+            data = (int)nodeData;
+        } catch (Exception e) {return;}
+        // check if node already exists
+        if(rootData == data){
+            return;
+        }
+        // check if the node is less than the root
+        if(rootData>data) {
+            if (root.left==null) {
+                root.left = new Treenode<>(nodeData);
+            }
+            addToTree(root.left, nodeData);
+        }else{
+            if (root.right==null) {
+                root.right = new Treenode<>(nodeData);
+            }
+            addToTree(root.right, nodeData);
+        }
+    }
+
     //TRAVERSAL METHODS
     public void printPre(Treenode<T> node){
         if(node == null){
             return;
         }
-        System.out.println(node.getValue());
+        System.out.println(node.data);
         printPre(node.left);
         printPre(node.right);
     }
@@ -21,7 +54,7 @@ public class BinTree<T>{
             return;
         }
         printIn(node.left);
-        System.out.println(node.getValue());
+        System.out.println(node.data);
         printIn(node.right);
     }
     public void printPost(Treenode<T> node){
@@ -30,7 +63,7 @@ public class BinTree<T>{
         }
         printPost(node.left);
         printPost(node.right);
-        System.out.println(node.getValue());
+        System.out.println(node.data);
     }
 
     //SEARCH AND SUM METHODS
@@ -38,10 +71,10 @@ public class BinTree<T>{
         if(node==null){
             return false;
         }
-        int data = 0;
+        int data;
         try {
             // check if the data can be cast to an integer
-            data = (int)node.getValue();
+            data = (int)node.data;
         } catch (Exception e) {
             // return false if unable
             return false;
@@ -60,10 +93,10 @@ public class BinTree<T>{
             return 0;
         }
 
-        int data = 0;
+        int data;
         try {
             // check if the data can be cast to an integer
-            data = (int)node.getValue();
+            data = (int)node.data;
         } catch (Exception e) {
             // return false if unable
             return 0;
